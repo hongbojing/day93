@@ -10,35 +10,50 @@
 <div id="container">
 
 </div>
+<div id="1"></div>
 <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 <script src="js/lib/underscore.js"></script>
 <script src="SampleData.js"></script>
 <script>
-    function getStudentInfo(elem, indx, list) {
+    function log(value) {
         var container = document.getElementById("container");
-        var student = "<p>" + elem.firstname + " " + elem.lastname + ", Avg.Score: " + elem.average_score + "</p>";
-        container.innerHTML = container.innerHTML + student;
+        var data = "<p>" + value + "</p>";
+        container.innerHTML = container.innerHTML + data;
     }
     window.addEventListener("load", function (e) {
-        var container = document.getElementById("container");
+        //create a unique ID, with and without a prefix
+//        log("using uniqueID() to generate an ID for use in the DOM");
+//        var sID = _.uniqueId();
+//        log("ID with no prefix: " + sID);
+//        var sID = _.uniqueId("prefix_");
+//        log("ID with prefix: " + sID);
+//        var sID = _.uniqueId("prefix_");
+//        log("ID with prefix: " + sID);
+//        var sID = _.uniqueId("prefix_");
+//        log("ID with prefix: " + sID);
 
-        //extend each student object with a new property, their average score
-//        container.innerHTML += "<h2>Extending student objects with average_score</h2>";
-//        _.each(students, function (elem, indx, list) {
-//            avg = (elem.midterm_score + elem.final_score) / 2;
-//            _.extend(elem, {"average_score" : avg});
-//        });
-//        _.each(students, getStudentInfo);
-//        container.innerHTML += "<h2>Assigning default values to a new object</h2>";
-//        var defaultValues = {final_score: 0, midterm_score: 0, grade: 9};
-//        var newStudent = {firstname: "John", lastname: "Doe"};
-//        _.defaults(newStudent, defaultValues);
-//        container.innerHTML += "<p>" + newStudent.firstname + " " + newStudent.lastname + ", Midterm: " + newStudent.midterm_score + ", Final: " + newStudent.final_score + "</p>";
+        //generate a random number
+//        var rand1 = _.random(25);
+//        log("random number up to 25: " + rand1);
+        //one argument menas between 0 and the value
+//        var rand2 = _.random(300, 200);
+        //generates value within range
+//        log("random number within 100 and 200 : " + rand2);
+        //use the times() function to execute a counter loop
+//        log("using _.times()")
+//        _.times(5, function (n) {
+//            log("time"+n);
+//        })
+        log("extending underscore with a capitalize() function: ");
+        _.mixin({
+            capitalize: function (string) {
+                return string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();
+            }
+        });
+        log(_("capitalize").capitalize());
+        log(_("CAPITALIZE").capitalize());
+        log(_.capitalize("HONGBO LOL a"));
 
-        //clone() makes a shallow-copy of the object (in other words, properties that are arrays or objects will be copied by reference, and not duplicated themselves)
-        container.innerHTML += "<h2>Cloning an existing object</h2>";
-        var copyStudent = _.clone(students[0]);
-        container.innerHTML += "<p>" + copyStudent.firstname + " " + copyStudent.lastname + ", Midterm: " + copyStudent.midterm_score + ", Final: " + copyStudent.final_score + "</p>";
     });
 </script>
 </body>
